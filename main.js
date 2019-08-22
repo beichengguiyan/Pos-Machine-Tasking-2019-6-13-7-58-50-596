@@ -43,21 +43,21 @@ function fetchProduct(code) {
     return result
 }
 
-function  generateReceiptItems(codes) {
+function generateReceiptItems(codes) {
     let result = [];
-    let countedCodes =countProducts(codes);
+    let countedCodes = countProducts(codes);
     for (let index = 0; index < countedCodes.length; index++) {
-         let fetchedCodes = fetchProduct(countedCodes[index].code);
-         result.push({
-             name:fetchedCodes.name,
-             price:fetchedCodes.price,
-             count:countedCodes[index].count
+        let fetchedCodes = fetchProduct(countedCodes[index].code);
+        result.push({
+            name: fetchedCodes.name,
+            price: fetchedCodes.price,
+            count: countedCodes[index].count
         })
-     }
-    return result;  
+    }
+    return result;
 }
 
-function countTotalPrice(collection){
+function countTotalPrice(collection) {
     let price = 0;
     for (let i = 0; i < collection.length; i++) {
         let subPrice = 0;
@@ -68,7 +68,7 @@ function countTotalPrice(collection){
 
 }
 
-function assemble(collection,totalPrice){
+function assemble(collection, totalPrice) {
     let result = "";
     result = result + "Receipts\n------------------------------------------------------------\n";
     for (let i = 0; i < collection.length; i++) {
@@ -88,7 +88,12 @@ function assemble(collection,totalPrice){
     return result;
 }
 
-
+function printReceipts(codes) {
+    let generateItems = generateReceiptItems(codes);
+    let totalPrice = countTotalPrice(generateItems);
+    let result = assemble(generateItems, totalPrice);
+    return result;
+}
 
 
 module.exports = {
@@ -96,5 +101,6 @@ module.exports = {
     fetchProduct,
     generateReceiptItems,
     countTotalPrice,
-    assemble
+    assemble,
+    printReceipts
 };

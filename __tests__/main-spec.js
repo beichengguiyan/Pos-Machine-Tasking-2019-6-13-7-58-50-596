@@ -3,7 +3,8 @@ const {
     fetchProduct,
     generateReceiptItems,
     countTotalPrice,
-    assemble
+    assemble,
+    printReceipts
 } = require('../main');
 /*
 it ('should count codes', () => {
@@ -27,7 +28,7 @@ it ('should fetch product', () => {
 
     it ('should generate receipt items', () => {
         //given
-        let codes = ["0003","0003","0001",]
+        let codes = ["0003","0003","0001"];
         //when
         const result = generateReceiptItems(codes);
         console.log("================");
@@ -46,7 +47,6 @@ it ('should fetch product', () => {
         //then
         });
 
-        */
 
        it ('should ', () => {
         //given
@@ -57,4 +57,15 @@ it ('should fetch product', () => {
         console.log(receiptText);
         //then
         });
+*/
+
+it('should ', () => {
+    //given
+    let codes = ["0003", "0003", "0001"];
+    //when
+    const printedReceipts = printReceipts(codes);
+    console.log("================");
+    console.log(printedReceipts);
+    //then
+});
 
